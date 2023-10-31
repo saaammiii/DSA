@@ -1,0 +1,19 @@
+int largePowerOf2(int n){
+  int x=0;
+  while((1<<x)<=n){
+    x++;
+  }
+  return  x-1;
+}
+
+int countSetBits(int N)
+{
+   if(N==0){
+     return 0;
+   }
+   int x=largePowerOf2(N);
+   int y= x*(1<<(x-1));
+   int z= N-(1<<x);
+   return y+z+1+countSetBits(z);
+}
+
