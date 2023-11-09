@@ -1,0 +1,59 @@
+class Queue {
+    // Define the data members(if any) here.
+    stack<int>inp,out;
+    
+    public:
+    Queue() {
+        // Initialize your data structure here.
+    }
+
+    void enQueue(int val) {
+        inp.push(val);
+    }
+
+    int deQueue() {
+        if(inp.empty()){
+            return -1;
+        }
+        else{
+            while(!inp.empty()){
+                out.push(inp.top());
+                inp.pop();
+            }
+            int x=out.top();
+            out.pop();
+            while(!out.empty()){
+                inp.push(out.top());
+                out.pop();
+            }
+            return x;
+        }
+        
+    }
+
+    int peek() {
+        if(inp.empty()){
+            return -1;
+        }
+        else{
+            while (!inp.empty()) {
+                out.push(inp.top());
+                inp.pop();
+            }
+            int x=out.top();
+            while(!out.empty()){
+                inp.push(out.top());
+                out.pop();
+            }
+            return x;
+        }
+        
+    }
+
+    bool isEmpty() {
+        if(inp.empty() && out.empty()){
+            return true;
+        }
+        return false;
+    }
+};
