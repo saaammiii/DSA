@@ -1,0 +1,40 @@
+class Queue {
+
+	int front, rear;
+	vector<int> arr;
+	int cnt=0;
+	int n;
+
+public:
+	Queue()
+	{
+		front = 0;
+		rear = 0;
+		arr.resize(100001);
+		n=arr.size();
+	}
+
+	// Enqueue (add) element 'e' at the end of the queue.
+	void enqueue(int e)
+	{
+		if(cnt==n){
+			return;
+		}
+		arr[rear%n]=e;
+		rear++;
+		cnt++;
+	}
+
+	// Dequeue (retrieve) the element from the front of the queue.
+	int dequeue()
+	{
+		if(cnt==0){
+			return -1;
+		}
+		int ele=arr[front];
+		arr[front%n]=-1;
+		front=front+1;
+		cnt=cnt-1;
+		return ele;
+	}
+};
