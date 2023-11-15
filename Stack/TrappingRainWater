@@ -1,0 +1,28 @@
+class Solution {
+public:
+    int trap(vector<int>& arr) {
+    int n=arr.size();
+    int res=0;
+    int leftMax=0;
+    int rytMax=0;
+    int left=0;
+    int ryt=n-1;
+    while(left<=ryt){
+        if(arr[left]<=arr[ryt]){
+            if(arr[left]>=leftMax)
+                leftMax=arr[left];
+            else
+                res+=leftMax-arr[left];
+                left++;
+        }
+        else{
+            if(arr[ryt]>=rytMax)
+                rytMax=arr[ryt];
+            else
+                res+=rytMax-arr[ryt];
+            ryt--;
+        }
+    }
+    return res;
+    }
+};
